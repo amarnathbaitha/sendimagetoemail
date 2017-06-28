@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.flipkart.R;
 
@@ -28,6 +30,10 @@ public class ProductDetailsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ImageView mImage;
+    private TextView mTvProductName,mTvProductPrice;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,10 +75,19 @@ public class ProductDetailsFragment extends Fragment {
 
 
         View view =  inflater.inflate(R.layout.fragment_product_details, container, false);
+
+        mTvProductName = (TextView)view.findViewById(R.id.tv_product_name);
+        mTvProductPrice = (TextView)view.findViewById(R.id.tv_product_price);
+        mImage = (ImageView)view.findViewById(R.id.imageView);
+
+
         String productName = getArguments().getString("ProductName");
         String productPrice = getArguments().getString("ProductPrice");
         int productImage = getArguments().getInt("ProductImage");
 
+        mTvProductName.setText(productName);
+        mTvProductPrice.setText(productPrice);
+        mImage.setImageResource(productImage);
         Log.d("amar", "onCreateView: "+productName +" ,"+productPrice +" ,"+productImage);
         return view;
     }
