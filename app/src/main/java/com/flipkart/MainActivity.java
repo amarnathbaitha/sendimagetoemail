@@ -25,6 +25,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.flipkart.fragment.CameraFragment;
 import com.flipkart.fragment.GalaryFragment;
+import com.flipkart.fragment.ProductDetailsFragment;
 import com.flipkart.fragment.SendFragment;
 import com.flipkart.fragment.ShareFragment;
 import com.flipkart.fragment.SlideShowFragment;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         GalaryFragment.OnFragmentInteractionListener,
         SlideShowFragment.OnFragmentInteractionListener,
         ToolFragment.OnFragmentInteractionListener,
-        ShareFragment.OnFragmentInteractionListener, SendFragment.OnFragmentInteractionListener {
+        ShareFragment.OnFragmentInteractionListener, SendFragment.OnFragmentInteractionListener,ProductDetailsFragment.OnFragmentInteractionListener {
     private FrameLayout frameLayout;
     private ImageView imageView;
 

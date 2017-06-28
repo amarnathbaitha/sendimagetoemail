@@ -1,7 +1,11 @@
 package com.flipkart.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +16,9 @@ import android.widget.Toast;
 
 import com.flipkart.MainActivity;
 import com.flipkart.R;
+import com.flipkart.activity.ProductDescriptionActivity;
 import com.flipkart.fragment.GalaryFragment;
+import com.flipkart.fragment.ProductDetailsFragment;
 
 /**
  * Created by santosh on 24/6/17.
@@ -79,11 +85,37 @@ public class ProductListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Toast.makeText(context.getActivity(), "You Clicked "+productName[position], Toast.LENGTH_LONG).show();
+              //  Intent intent = new Intent(context.getActivity(), ProductDescriptionActivity.class);
+                //intent.putExtra("your_extra","your_class_value");
+                //context.startActivity(intent);
+               // Toast.makeText(context.getActivity(), "You Clicked "+productName[position], Toast.LENGTH_LONG).show();
+
+                ProductDetailsFragment productDetailsFragment = new ProductDetailsFragment();
+
+                setFragment(productDetailsFragment,position);
             }
         });
 
         return rowView;
+    }
+
+    private void setFragment(ProductDetailsFragment productDetailsFragment,int pos) {
+
+//        String [] productName = new String[0];
+//        String [] productPrice;
+//        int [] imageId;
+
+        Bundle bundle = new Bundle();
+        bundle.putString("ProductName", productName[pos]);
+        bundle.putString("ProductPrice", productPrice[pos]);
+        bundle.putInt("ProductImage", imageId[pos]);
+
+        productDetailsFragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = context.getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, productDetailsFragment);
+        fragmentTransaction.commit();
     }
 
 }

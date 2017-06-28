@@ -23,4 +23,8 @@
     <string name="tool_fragment">Tool fragment</string>
     <string name="share_subject">Need to change product</string>
     <string name="share_message">Product is defective Please change the prodcut</string>
+    <string name="title_activity_product_description">ProductDescriptionActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
