@@ -220,7 +220,7 @@ public class SlideShowFragment extends Fragment {
         Log.d("amar", "sendMail: ");
         Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
-                new String[] { "amarwinner.mca@gmail.com" });
+                new String[] { "manjitkaurkhehra@gmail.com" });
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
                 "Truiton Test Mail");
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
