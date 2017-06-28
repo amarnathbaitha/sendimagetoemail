@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Flipkart</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="camera_fragment">Camera fragment</string>
+
+    <string name="galary_fragment">Galary fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="slide_fragment">Slide Show fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="share_fragment">Share fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="send_fragment">Send fragment</string>
+
+    <string name="tool_fragment">Tool fragment</string>
+    <string name="share_subject">Need to change product</string>
+    <string name="share_message">Product is defective Please change the prodcut</string>
+</resources>

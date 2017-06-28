@@ -1,0 +1,109 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/darker_gray">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#e8e8e7"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:gravity="right"
+                android:orientation="horizontal" >
+
+                //</LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:hint="We are happy to help you.."
+            android:id="@+id/name"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="20dp"/>
+
+
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:hint="Contact us on click:"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/email"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="15dp"/>
+
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:hint="55656678686"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            android:id="@+id/emaild"
+            android:paddingLeft="5dp"
+            android:clickable="true"
+            android:layout_marginTop="15dp"/>
+
+
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:hint="Email Us:"
+            android:id="@+id/mobile"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="15dp"/>
+
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:hint="myapp.com"
+            android:id="@+id/mobiled"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="15dp"/>
+
+
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:hint="Visit us:"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="15dp"/>
+
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:hint="mysore,karnataka"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="15dp"/>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

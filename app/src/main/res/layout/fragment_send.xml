@@ -1,0 +1,155 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/holo_orange_dark"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#e8e8e7"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true">
+
+            <!--  <ImageView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/linkedin"
+                  android:layout_marginLeft="10dp"/>
+  -->
+
+            <!--<TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign up"
+                android:textColor="#2582C5"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal|center_vertical"/>
+
+
+-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:gravity="right"
+                android:orientation="horizontal" >
+                <!--    <ImageView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/select"
+
+                        />
+    -->
+                //</LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="100dp"
+            android:orientation="vertical"
+            >
+
+            <ImageView android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:id="@+id/imageview"
+                android:background="@drawable/plan"
+                android:visibility="gone"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_horizontal"></ImageView>
+
+            <EditText android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="name"
+                android:id="@+id/name"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:inputType="textPersonName"
+                android:layout_marginTop="30dp"/>
+
+            <EditText android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="email"
+                android:id="@+id/email"
+                android:inputType="textEmailAddress"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"/>
+
+            <EditText android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="mobile"
+                android:id="@+id/mobile"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:inputType="phone"
+                android:layout_marginTop="15dp"/>
+
+            <EditText android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="address"
+                android:inputType="textPostalAddress"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"/>
+
+            <EditText android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="category"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"/>
+
+
+            <Button android:layout_width="190dp"
+                android:id ="@+id/buttonAttachment"
+                android:layout_height="38dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="select"
+                android:textColor="#fff"
+                android:background="@drawable/btn"/>
+            <!--<EditText android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="camera"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"/>-->
+            <Button android:layout_width="190dp"
+                android:id ="@+id/buttonSend"
+                android:layout_height="38dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="submit"
+                android:textColor="#fff"
+                android:background="@drawable/btn"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
