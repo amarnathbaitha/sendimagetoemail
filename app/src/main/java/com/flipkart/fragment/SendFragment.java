@@ -1,12 +1,18 @@
 package com.flipkart.fragment;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +23,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.flipkart.R;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +43,7 @@ public class SendFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final int CAMERA_REQUEST = 1888;
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 99;
     EditText emailAddress;
     EditText emailSubject;
     EditText message;
@@ -51,6 +63,10 @@ public class SendFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    String toemailAddress;
+    String msubject;
+    String mmessage;
 
 
 
@@ -146,9 +162,9 @@ public class SendFragment extends Fragment implements View.OnClickListener {
 //
             case R.id.buttonSend:
 
-                String toemailAddress = emailAddress.getText().toString();
-                String msubject = emailSubject.getText().toString();
-                String mmessage = message.getText().toString();
+                 toemailAddress = emailAddress.getText().toString();
+                 msubject = emailSubject.getText().toString();
+                 mmessage = message.getText().toString();
 
                 if (toemailAddress.matches("")) {
                     Toast.makeText(getActivity(), "You did not enter a username", Toast.LENGTH_SHORT).show();
@@ -161,21 +177,22 @@ public class SendFragment extends Fragment implements View.OnClickListener {
                     return;
                 }
 
+                checkPermission();
 
-                final Intent emailIntent = new Intent(
-                        android.content.Intent.ACTION_SEND);
-                emailIntent.setType("plain/text");
-                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
-                        new String[]{"amarwinner.mca@gmail.com"});
-                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
-                        msubject);
-                /*if (URI != null) {
-                    emailIntent.putExtra(Intent.EXTRA_STREAM, URI);
-                }*/
-                emailIntent
-                        .putExtra(android.content.Intent.EXTRA_TEXT, mmessage +""+msubject +"" +toemailAddress);
-                this.startActivity(Intent.createChooser(emailIntent,
-                        "Sending email..."));
+//                final Intent emailIntent = new Intent(
+//                        android.content.Intent.ACTION_SEND);
+//                emailIntent.setType("plain/text");
+//                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
+//                        new String[]{"amarwinner.mca@gmail.com"});
+//                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+//                        msubject);
+//                /*if (URI != null) {
+//                    emailIntent.putExtra(Intent.EXTRA_STREAM, URI);
+//                }*/
+//                emailIntent
+//                        .putExtra(android.content.Intent.EXTRA_TEXT, mmessage +""+msubject +"" +toemailAddress);
+//                this.startActivity(Intent.createChooser(emailIntent,
+//                        "Sending email..."));
                 break;
             default:
                 break;
@@ -205,5 +222,77 @@ public class SendFragment extends Fragment implements View.OnClickListener {
             imageView.setImageBitmap(photo);
         }
 
+    }
+
+    private void checkPermission(){
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+//                saveToInternalStorage(photo);
+
+                // Show an explanation to the user asynchronously -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+
+        saveBitmap(photo);
+    }
+
+    public void saveBitmap(Bitmap bitmap) {
+        Log.d("amar", "saveBitmap: ");
+        String filePath = Environment.getExternalStorageDirectory()
+                + File.separator + "Pictures/screenshot.png";
+        File imagePath = new File(filePath);
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(imagePath);
+            if(bitmap!=null)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.flush();
+            fos.close();
+            sendMail(filePath);
+        } catch (FileNotFoundException e) {
+            Log.e("GREC", e.getMessage(), e);
+        } catch (IOException e) {
+            Log.e("GREC", e.getMessage(), e);
+        }
+    }
+
+    public void sendMail(String path) {
+        Log.d("amar", "sendMail: ");
+        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
+                new String[] { "amarwinner.mca@gmail.com" });
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Regarding replacement of furniture");
+//        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "This is an autogenerated mail from Truiton's InAppMail app");
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, mmessage +""+msubject +"" +toemailAddress);
+        Uri myUri = Uri.parse("file://" + path);
+        Log.d("manjit", "sendMail: uri::"+myUri+"and path:: "+path);
+        if(path == null){
+            emailIntent.setType("plain/text");
+        }else {
+            emailIntent.setType("image/png");
+            emailIntent.putExtra(Intent.EXTRA_STREAM, myUri);
+        }
+
+        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
 }
