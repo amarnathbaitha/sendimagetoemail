@@ -1,7 +1,9 @@
 package com.flipkart.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.flipkart.R;
@@ -27,6 +31,7 @@ public class SendFragment extends Fragment implements View.OnClickListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final int CAMERA_REQUEST = 1888;
     EditText emailAddress;
     EditText emailSubject;
     EditText message;
@@ -38,6 +43,10 @@ public class SendFragment extends Fragment implements View.OnClickListener {
     Uri URI = null;
     private static final int PICK_FROM_GALLERY = 101;
     int columnIndex;
+
+    private ImageButton imageButton;
+    Bitmap photo;
+    private ImageView imageView;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -83,12 +92,22 @@ public class SendFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_send, container, false);
-        Button btnSend = (Button) rootView.findViewById(R.id.buttonSend);
+         btnSend = (Button) rootView.findViewById(R.id.buttonSend);
          emailAddress = (EditText)  rootView.findViewById(R.id.name);
          emailSubject = (EditText) rootView.findViewById(R.id.mobile);
          message = (EditText) rootView.findViewById(R.id.email);
+        imageButton =(ImageButton)rootView.findViewById(R.id.buttonAttachment);
+        imageView = (ImageView)rootView.findViewById(R.id.iv_pic);
         btnSend.setOnClickListener(this);
-        // Inflate the layout for this fragment
+
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            }
+        });
         return rootView;
 
 
@@ -124,11 +143,8 @@ public class SendFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-
-
 //
             case R.id.buttonSend:
-                // do your code
 
                 String toemailAddress = emailAddress.getText().toString();
                 String msubject = emailSubject.getText().toString();
@@ -144,6 +160,8 @@ public class SendFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), "Message is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+
                 final Intent emailIntent = new Intent(
                         android.content.Intent.ACTION_SEND);
                 emailIntent.setType("plain/text");
@@ -177,5 +195,15 @@ public class SendFragment extends Fragment implements View.OnClickListener {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent data) {
+        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+            photo = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(photo);
+        }
+
     }
 }
