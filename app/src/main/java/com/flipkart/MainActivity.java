@@ -25,6 +25,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.flipkart.fragment.CameraFragment;
 import com.flipkart.fragment.GalaryFragment;
+import com.flipkart.fragment.HomeFragment;
 import com.flipkart.fragment.ProductDetailsFragment;
 import com.flipkart.fragment.SendFragment;
 import com.flipkart.fragment.ShareFragment;
@@ -37,15 +38,19 @@ public class MainActivity extends AppCompatActivity
         GalaryFragment.OnFragmentInteractionListener,
         SlideShowFragment.OnFragmentInteractionListener,
         ToolFragment.OnFragmentInteractionListener,
-        ShareFragment.OnFragmentInteractionListener, SendFragment.OnFragmentInteractionListener,ProductDetailsFragment.OnFragmentInteractionListener {
+        ShareFragment.OnFragmentInteractionListener,
+        SendFragment.OnFragmentInteractionListener,
+        ProductDetailsFragment.OnFragmentInteractionListener,HomeFragment.OnFragmentInteractionListener{
     private FrameLayout frameLayout;
     private ImageView imageView;
+    NavigationView navigationView;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
 
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         View header = navigationView.getHeaderView(0);
@@ -63,6 +68,10 @@ public class MainActivity extends AppCompatActivity
 //
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(imageView);
         Glide.with(this).load(R.raw.god).into(imageViewTarget);
+
+        HomeFragment homeFragment = new HomeFragment();
+        setFragment(homeFragment);
+        toolbar.setTitle("Home");
     }
 
     @Override
@@ -105,32 +114,38 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             CameraFragment cameraFragment = new CameraFragment();
             setFragment(cameraFragment);
+            toolbar.setTitle("Camera");
             Toast.makeText(this, "Camera", Toast.LENGTH_SHORT).show();
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
             GalaryFragment galaryFragment = new GalaryFragment();
             setFragment(galaryFragment);
+            toolbar.setTitle("Catalogue");
             Toast.makeText(this, "Galary", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_slideshow) {
             SlideShowFragment slideShowFragment = new SlideShowFragment();
             setFragment(slideShowFragment);
+            toolbar.setTitle("SlideShow");
             Toast.makeText(this, "SlideShow", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_manage) {
             ToolFragment toolFragment = new ToolFragment();
             setFragment(toolFragment);
+            toolbar.setTitle("Navigation");
             Toast.makeText(this, "Tool", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_share) {
             ShareFragment shareFragment = new ShareFragment();
             setFragment(shareFragment);
+            toolbar.setTitle("About Us");
             Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_send) {
             SendFragment sendFragment = new SendFragment();
             setFragment(sendFragment);
+            toolbar.setTitle("Send Enquiry");
             Toast.makeText(this, "send", Toast.LENGTH_SHORT).show();
 
         }

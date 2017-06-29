@@ -5,7 +5,7 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Camera" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
@@ -18,19 +18,16 @@
             android:id="@+id/nav_manage"
             android:icon="@drawable/nav"
             android:title="Navigation" />
-    </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="About Us" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send Enquiry" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_menu_about_us"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/ic_menu_email"
+            android:title="Send Enquiry" />
+
+    </group>
 
 </menu>
