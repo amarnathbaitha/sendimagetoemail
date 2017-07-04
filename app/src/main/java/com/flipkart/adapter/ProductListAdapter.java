@@ -1,7 +1,6 @@
 package com.flipkart.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,12 +11,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.flipkart.MainActivity;
 import com.flipkart.R;
-import com.flipkart.activity.ProductDescriptionActivity;
-import com.flipkart.fragment.GalaryFragment;
 import com.flipkart.fragment.ProductDetailsFragment;
 
 /**

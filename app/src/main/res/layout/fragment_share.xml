@@ -1,9 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView1"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@android:color/darker_gray"
-    >
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,12 +11,14 @@
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="We are happy to help you.."
+            android:gravity="center"
+            android:text="We are happy to help you.."
             android:paddingLeft="10dp"
-            android:textSize="30sp"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
 
@@ -26,21 +27,24 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="Contact us on click:"
+            android:gravity="center_horizontal"
+            android:text="Contact us on click:"
+            android:textColor="@android:color/white"
             android:paddingLeft="5dp"
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/emaild"
+            android:id="@+id/tv_contact"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
+            android:autoLink="phone"
             android:clickable="true"
-            android:hint="55656678686"
+            android:gravity="center_horizontal"
             android:paddingLeft="5dp"
-            android:textSize="25sp"
-            android:textStyle="italic" />
+            android:text="@string/contact"
+            android:textSize="25sp" />
 
 
         <TextView
@@ -48,39 +52,46 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="Email Us:"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:text="Email Us:"
             android:paddingLeft="5dp"
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/mobiled"
+            android:id="@+id/tv_email"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:hint="myapp.com"
+            android:layout_marginTop="10dp"
+            android:autoLink="email"
+            android:gravity="center_horizontal"
             android:paddingLeft="5dp"
-            android:textSize="25sp"
-            android:textStyle="italic" />
+            android:text="@string/email"
+            android:textSize="25sp" />
 
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="Visit us:"
+            android:gravity="center_horizontal"
+            android:text="Visit us:"
+            android:textColor="@android:color/white"
             android:paddingLeft="5dp"
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:hint="mysore,karnataka"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+           android:text="@string/address"
             android:paddingLeft="5dp"
+            android:textColor="@android:color/darker_gray"
             android:textSize="25sp"
-            android:textStyle="italic" />
+            />
 
     </LinearLayout>
 

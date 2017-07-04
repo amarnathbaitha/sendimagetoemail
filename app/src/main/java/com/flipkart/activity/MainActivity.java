@@ -1,4 +1,4 @@
-package com.flipkart;
+package com.flipkart.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.flipkart.R;
 import com.flipkart.fragment.CameraFragment;
 import com.flipkart.fragment.GalaryFragment;
 import com.flipkart.fragment.HomeFragment;
