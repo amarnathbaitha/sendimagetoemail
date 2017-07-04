@@ -76,7 +76,7 @@
                 android:src="@drawable/bed"/>
 
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/buttonAttachment"
                 android:layout_width="1dp"
                 android:layout_height="100dp"

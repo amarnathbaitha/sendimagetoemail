@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,6 +21,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ViewFlipper;
 
 import com.flipkart.R;
 
@@ -37,11 +40,8 @@ import java.io.IOException;
  */
 public class SlideShowFragment extends Fragment {
 
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 99;
-    private static final int CAMERA_REQUEST = 1888;
-    private Button send;
-    private ImageView image, img;
-    private Bitmap photo;
+    int mFlipping = 0 ; // Initially flipping is off
+    Button mButton ; // Reference to button available in the layout to start and stop the flipper
 
 
     public SlideShowFragment() {
@@ -53,94 +53,43 @@ public class SlideShowFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_slide_show, container, false);
+        final View view = inflater.inflate(R.layout.fragment_slide_show, container, false);
 
-        send = (Button) view.findViewById(R.id.emailsendbutton);
-        image = (ImageView) view.findViewById(R.id.imageView1);
-        img = (ImageView) view.findViewById(R.id.imageView2);
 
-        Button camera = (Button) view.findViewById(R.id.button1);
-        camera.setOnClickListener(new View.OnClickListener() {
+        /** Click event handler for button */
+        OnClickListener listener = new OnClickListener() {
 
             @Override
-            public void onClick(View arg0) {
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_REQUEST);
-            }
-        });
+            public void onClick(View v) {
+                ViewFlipper flipper = (ViewFlipper) view.findViewById(R.id.flipper1);
 
-        send.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                checkPermission();
+                if(mFlipping==0){
+                    /** Start Flipping */
+                    flipper.startFlipping();
+                    mFlipping=1;
+                    mButton.setText(R.string.str_btn_stop);
+                }
+                else{
+                    /** Stop Flipping */
+                    flipper.stopFlipping();
+                    mFlipping=0;
+                    mButton.setText(R.string.str_btn_start);
+                }
             }
-        });
+        };
+
+        /** Getting a reference to the button available in the resource */
+        mButton = (Button) view.findViewById(R.id.btn);
+
+        /** Setting click event listner for the button */
+        mButton.setOnClickListener(listener);
 
         return view;
     }
 
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode,
-                                 Intent data) {
-        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-            photo = (Bitmap) data.getExtras().get("data");
-            image.setImageBitmap(photo);
-        }
-
-    }
-
-    private void checkPermission() {
-        if (ContextCompat.checkSelfPermission(getContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-
-            } else {
-
-                // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-            }
-        }
-        saveBitmap(photo);
-    }
 
 
-    public void saveBitmap(Bitmap bitmap) {
-        String filePath = Environment.getExternalStorageDirectory()
-                + File.separator + "Pictures/screenshot.png";
-        File imagePath = new File(filePath);
-        FileOutputStream fos;
-        try {
-            fos = new FileOutputStream(imagePath);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-            fos.flush();
-            fos.close();
-            sendMail(filePath);
-        } catch (FileNotFoundException e) {
-            Log.e("GREC", e.getMessage(), e);
-        } catch (IOException e) {
-            Log.e("GREC", e.getMessage(), e);
-        }
-    }
 
-    public void sendMail(String path) {
-        Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
-                new String[]{"manjitkaurkhehra@gmail.com"});
-        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
-                "Truiton Test Mail");
-        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
-                "This is an autogenerated mail from Truiton's InAppMail app");
-        emailIntent.setType("image/png");
-        Uri myUri = Uri.parse("file://" + path);
-        emailIntent.putExtra(Intent.EXTRA_STREAM, myUri);
-        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-    }
 
 }

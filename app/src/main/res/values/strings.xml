@@ -27,4 +27,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_home_fragment">Hello Home fragment</string>
+
+    <string name="str_img1">Image1</string>
+    <string name="str_img2">Image2</string>
+    <string name="str_img3">Image3</string>
+    <string name="str_img4">Image4</string>
+    <string name="str_img5">Image5</string>
+
+    <string name="str_btn_start">Start SlideShow</string>
+    <string name="str_btn_stop">Stop SlideShow</string>
 </resources>

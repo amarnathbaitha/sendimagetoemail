@@ -45,9 +45,8 @@ public class SendFragment extends Fragment implements View.OnClickListener {
 
     private Button btnSend;
 
-    private ImageButton imageButton;
     private Bitmap photo;
-    private ImageView imageView;
+    private ImageView imageView,imageButton;
 
     private String toemailAddress, msubject, mmessage;
 
@@ -72,10 +71,9 @@ public class SendFragment extends Fragment implements View.OnClickListener {
         emailAddress = (EditText) rootView.findViewById(R.id.name);
         emailSubject = (EditText) rootView.findViewById(R.id.mobile);
         message = (EditText) rootView.findViewById(R.id.email);
-        imageButton = (ImageButton) rootView.findViewById(R.id.buttonAttachment);
+        imageButton = (ImageView) rootView.findViewById(R.id.buttonAttachment);
         imageView = (ImageView) rootView.findViewById(R.id.iv_pic);
         btnSend.setOnClickListener(this);
-
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
