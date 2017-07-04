@@ -1,14 +1,10 @@
 package com.flipkart;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,43 +12,32 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.flipkart.fragment.CameraFragment;
 import com.flipkart.fragment.GalaryFragment;
 import com.flipkart.fragment.HomeFragment;
-import com.flipkart.fragment.ProductDetailsFragment;
 import com.flipkart.fragment.SendFragment;
 import com.flipkart.fragment.ShareFragment;
 import com.flipkart.fragment.SlideShowFragment;
 import com.flipkart.fragment.ToolFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,
-        CameraFragment.OnFragmentInteractionListener,
-        GalaryFragment.OnFragmentInteractionListener,
-        SlideShowFragment.OnFragmentInteractionListener,
-        ToolFragment.OnFragmentInteractionListener,
-        ShareFragment.OnFragmentInteractionListener,
-        SendFragment.OnFragmentInteractionListener,
-        ProductDetailsFragment.OnFragmentInteractionListener,HomeFragment.OnFragmentInteractionListener{
-    private FrameLayout frameLayout;
+        implements NavigationView.OnNavigationItemSelectedListener {
     private ImageView imageView;
-    NavigationView navigationView;
-    Toolbar toolbar;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,7 +45,7 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         View header = navigationView.getHeaderView(0);
@@ -115,38 +100,32 @@ public class MainActivity extends AppCompatActivity
             CameraFragment cameraFragment = new CameraFragment();
             setFragment(cameraFragment);
             toolbar.setTitle("Camera");
-            Toast.makeText(this, "Camera", Toast.LENGTH_SHORT).show();
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
             GalaryFragment galaryFragment = new GalaryFragment();
             setFragment(galaryFragment);
             toolbar.setTitle("Catalogue");
-            Toast.makeText(this, "Galary", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_slideshow) {
             SlideShowFragment slideShowFragment = new SlideShowFragment();
             setFragment(slideShowFragment);
             toolbar.setTitle("SlideShow");
-            Toast.makeText(this, "SlideShow", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_manage) {
             ToolFragment toolFragment = new ToolFragment();
             setFragment(toolFragment);
             toolbar.setTitle("Navigation");
-            Toast.makeText(this, "Tool", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_share) {
             ShareFragment shareFragment = new ShareFragment();
             setFragment(shareFragment);
             toolbar.setTitle("About Us");
-            Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_send) {
             SendFragment sendFragment = new SendFragment();
             setFragment(sendFragment);
             toolbar.setTitle("Send Enquiry");
-            Toast.makeText(this, "send", Toast.LENGTH_SHORT).show();
 
         }
 
@@ -162,8 +141,5 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-        Toast.makeText(this, "OnFragmentInteractionListener", Toast.LENGTH_SHORT).show();
-    }
+
 }
