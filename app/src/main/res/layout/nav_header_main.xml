@@ -16,20 +16,20 @@
         android:id="@+id/iv_pic"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/sofa1"
 
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Android Studio"
+        android:text="@string/catalogue"
          />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="android.studio@android.com" />
+        android:text="@string/email" />
 
 </LinearLayout>

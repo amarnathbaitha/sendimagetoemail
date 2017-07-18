@@ -1,29 +1,28 @@
-package com.flipkart.fragment;
+package com.catalogue.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.flipkart.R;
+import com.catalogue.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HomeFragment} interface
+ * {@link ShareFragment} interface
  * to handle interaction events.
- * Use the {@link HomeFragment#} factory method to
+ * Use the {@link ShareFragment} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class ShareFragment extends Fragment {
 
-    public HomeFragment() {
+
+    public ShareFragment() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -36,7 +35,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_share, container, false);
     }
+
 
 }

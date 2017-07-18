@@ -1,4 +1,4 @@
-package com.flipkart.activity;
+package com.catalogue.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -14,18 +14,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-import com.flipkart.R;
-import com.flipkart.fragment.CameraFragment;
-import com.flipkart.fragment.GalaryFragment;
-import com.flipkart.fragment.HomeFragment;
-import com.flipkart.fragment.SendFragment;
-import com.flipkart.fragment.ShareFragment;
-import com.flipkart.fragment.SlideShowFragment;
-import com.flipkart.fragment.ToolFragment;
+import com.catalogue.R;
+import com.catalogue.fragment.CameraFragment;
+import com.catalogue.fragment.GalaryFragment;
+import com.catalogue.fragment.HomeFragment;
+import com.catalogue.fragment.SendFragment;
+import com.catalogue.fragment.ToolFragment;
+import com.catalogue.fragment.ShareFragment;
+import com.catalogue.fragment.SlideShowFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity
         imageView = (ImageView) header.findViewById(R.id.iv_pic);
 //
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(imageView);
-        Glide.with(this).load(R.raw.god).into(imageViewTarget);
+        Glide.with(this).load(R.raw.sofa1).into(imageViewTarget);
 
         HomeFragment homeFragment = new HomeFragment();
         setFragment(homeFragment);

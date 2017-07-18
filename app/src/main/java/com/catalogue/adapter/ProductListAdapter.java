@@ -1,4 +1,4 @@
-package com.flipkart.adapter;
+package com.catalogue.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.flipkart.R;
-import com.flipkart.fragment.ProductDetailsFragment;
+import com.catalogue.R;
+import com.catalogue.fragment.ProductDetailsFragment;
 
 /**
  * Created by santosh on 24/6/17.

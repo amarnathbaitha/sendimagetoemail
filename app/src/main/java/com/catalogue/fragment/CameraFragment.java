@@ -1,4 +1,4 @@
-package com.flipkart.fragment;
+package com.catalogue.fragment;
 
 import android.Manifest;
 import android.app.Activity;
@@ -19,7 +19,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.flipkart.R;
+
+import com.catalogue.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;

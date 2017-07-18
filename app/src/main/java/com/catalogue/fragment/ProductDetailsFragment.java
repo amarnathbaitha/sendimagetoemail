@@ -1,7 +1,5 @@
-package com.flipkart.fragment;
+package com.catalogue.fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -11,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.flipkart.R;
+import com.catalogue.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
